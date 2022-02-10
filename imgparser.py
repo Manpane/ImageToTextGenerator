@@ -77,7 +77,7 @@ def createArt():
 while True:
     filename = ""
     while True:
-        filename = input("Enter the image file below\nNote : image of resolution less than (1080) are recomended\n\nFilename:")
+        filename = input("Enter the image filename :")
         try:
             with open(filename,"rb") as f:
                 break
