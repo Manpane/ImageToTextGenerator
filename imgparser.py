@@ -2,6 +2,7 @@ import numpy as np
 import cv2
 import os
 import time
+import sys
 RADIUS = 2
 PIXEL_LENGTH = 2
 def getAppropriateChar(per):
@@ -72,21 +73,34 @@ def createArt():
     with open(f"{destName}.txt","w") as file:
         for line in tl:
             file.write("\t\t\t"+line+"\n")
-
-    
-while True:
-    filename = ""
+def main():
+    global image
     while True:
-        filename = input("Enter the image filename :")
-        try:
-            with open(filename,"rb") as f:
-                break
-        except Exception as e:
-            print(str(e),"\n")
+        filename = ""
+        while True:
+            filename = input("Enter the image filename :")
+            try:
+                with open(filename,"rb") as f:
+                    break
+            except Exception as e:
+                print(str(e),"\n")
 
+        image = np.array(cv2.imread(filename))
+        createArt()
+        os.system("cls")
+
+if len(sys.argv)>1:
+    filename = sys.argv[1]
+    try:
+        with open(filename,"rb") as f:
+            pass
+    except Exception as e:
+        print(str(e),"\n")
     image = np.array(cv2.imread(filename))
     createArt()
-    os.system("cls")
+main()
+
+
 
 
 
